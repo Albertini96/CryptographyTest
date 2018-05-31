@@ -1,0 +1,14 @@
+/Volumes/SDCard/FEI/Destro/Cryptography/bin/release/netcoreapp2.0/osx.10.11-x64/libhostpolicy.dylib
+/Volumes/SDCard/FEI/Destro/Cryptography/bin/release/netcoreapp2.0/osx.10.11-x64/libhostfxr.dylib
+/Volumes/SDCard/FEI/Destro/Cryptography/bin/release/netcoreapp2.0/osx.10.11-x64/Cryptography
+/Volumes/SDCard/FEI/Destro/Cryptography/bin/release/netcoreapp2.0/osx.10.11-x64/Cryptography.deps.json
+/Volumes/SDCard/FEI/Destro/Cryptography/bin/release/netcoreapp2.0/osx.10.11-x64/Cryptography.runtimeconfig.json
+/Volumes/SDCard/FEI/Destro/Cryptography/bin/release/netcoreapp2.0/osx.10.11-x64/Cryptography.runtimeconfig.dev.json
+/Volumes/SDCard/FEI/Destro/Cryptography/bin/release/netcoreapp2.0/osx.10.11-x64/Cryptography.dll
+/Volumes/SDCard/FEI/Destro/Cryptography/bin/release/netcoreapp2.0/osx.10.11-x64/Cryptography.pdb
+/Volumes/SDCard/FEI/Destro/Cryptography/obj/release/netcoreapp2.0/osx.10.11-x64/Cryptography.csprojAssemblyReference.cache
+/Volumes/SDCard/FEI/Destro/Cryptography/obj/release/netcoreapp2.0/osx.10.11-x64/Cryptography.csproj.CoreCompileInputs.cache
+/Volumes/SDCard/FEI/Destro/Cryptography/obj/release/netcoreapp2.0/osx.10.11-x64/Cryptography.AssemblyInfoInputs.cache
+/Volumes/SDCard/FEI/Destro/Cryptography/obj/release/netcoreapp2.0/osx.10.11-x64/Cryptography.AssemblyInfo.cs
+/Volumes/SDCard/FEI/Destro/Cryptography/obj/release/netcoreapp2.0/osx.10.11-x64/Cryptography.dll
+/Volumes/SDCard/FEI/Destro/Cryptography/obj/release/netcoreapp2.0/osx.10.11-x64/Cryptography.pdb

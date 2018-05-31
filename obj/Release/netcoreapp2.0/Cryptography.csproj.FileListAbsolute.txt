@@ -1,0 +1,11 @@
+/Volumes/SDCard/FEI/Destro/Cryptography/bin/Release/netcoreapp2.0/Cryptography.deps.json
+/Volumes/SDCard/FEI/Destro/Cryptography/bin/Release/netcoreapp2.0/Cryptography.runtimeconfig.json
+/Volumes/SDCard/FEI/Destro/Cryptography/bin/Release/netcoreapp2.0/Cryptography.runtimeconfig.dev.json
+/Volumes/SDCard/FEI/Destro/Cryptography/bin/Release/netcoreapp2.0/Cryptography.dll
+/Volumes/SDCard/FEI/Destro/Cryptography/bin/Release/netcoreapp2.0/Cryptography.pdb
+/Volumes/SDCard/FEI/Destro/Cryptography/obj/Release/netcoreapp2.0/Cryptography.csprojAssemblyReference.cache
+/Volumes/SDCard/FEI/Destro/Cryptography/obj/Release/netcoreapp2.0/Cryptography.csproj.CoreCompileInputs.cache
+/Volumes/SDCard/FEI/Destro/Cryptography/obj/Release/netcoreapp2.0/Cryptography.AssemblyInfoInputs.cache
+/Volumes/SDCard/FEI/Destro/Cryptography/obj/Release/netcoreapp2.0/Cryptography.AssemblyInfo.cs
+/Volumes/SDCard/FEI/Destro/Cryptography/obj/Release/netcoreapp2.0/Cryptography.dll
+/Volumes/SDCard/FEI/Destro/Cryptography/obj/Release/netcoreapp2.0/Cryptography.pdb
