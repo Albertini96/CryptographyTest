@@ -124,22 +124,27 @@ namespace Cryptography
             byte[] data;
             // Convert the input string to a byte array and compute the hash.
             
-
-            foreach(Usuario item in Base)
+            using(System.IO.StreamWriter writetext = new System.IO.StreamWriter("BaseInMD5.txt"))
             {
-                Usuario temp = new Usuario();
+                foreach(Usuario item in Base)
+                {
+                    Usuario temp = new Usuario();
 
-                temp.nome = item.nome;
-                // Convert the input string to a byte array and compute the hash.
-                if(Salted)
-                    data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(item.senha + item.nome));
-                else
-                    data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(item.senha));
+                    temp.nome = item.nome;
+                    // Convert the input string to a byte array and compute the hash.
+                    if(Salted)
+                        data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(item.senha + item.nome));
+                    else
+                        data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(item.senha));
 
-                temp.senha = BitConverter.ToString(data).Replace("-", string.Empty);
+                    temp.senha = BitConverter.ToString(data).Replace("-", string.Empty);
 
-                ret.Add(temp);
+                    writetext.WriteLine(temp.nome + "|" + temp.senha);
+
+                    ret.Add(temp);
+                }
             }
+            
 
             return ret;
         }
@@ -149,24 +154,28 @@ namespace Cryptography
 
             SHA1 sha1hash = SHA1.Create();
 
-            foreach(Usuario item in Base)
+            using(System.IO.StreamWriter writetext = new System.IO.StreamWriter("BaseInSHA1.txt"))
             {
-                Usuario temp = new Usuario();
+                foreach(Usuario item in Base)
+                {
+                    Usuario temp = new Usuario();
 
-                temp.nome = item.nome;
+                    temp.nome = item.nome;
 
-                byte[] data;
-                // Convert the input string to a byte array and compute the hash.
-                if(Salted)
-                    data = sha1hash.ComputeHash(Encoding.UTF8.GetBytes(item.senha + item.nome));
-                else
-                    data = sha1hash.ComputeHash(Encoding.UTF8.GetBytes(item.senha));
+                    byte[] data;
+                    // Convert the input string to a byte array and compute the hash.
+                    if(Salted)
+                        data = sha1hash.ComputeHash(Encoding.UTF8.GetBytes(item.senha + item.nome));
+                    else
+                        data = sha1hash.ComputeHash(Encoding.UTF8.GetBytes(item.senha));
 
-                temp.senha = BitConverter.ToString(data).Replace("-", string.Empty);
+                    temp.senha = BitConverter.ToString(data).Replace("-", string.Empty);
 
-                ret.Add(temp);
+                    writetext.WriteLine(temp.nome + "|" + temp.senha);
+
+                    ret.Add(temp);
+                }
             }
-
             return ret;
         }
 
@@ -175,24 +184,28 @@ namespace Cryptography
 
             SHA256 sha256hash = SHA256.Create();
 
-            foreach(Usuario item in Base)
+            using(System.IO.StreamWriter writetext = new System.IO.StreamWriter("BaseInSHA256.txt"))
             {
-                Usuario temp = new Usuario();
+                foreach(Usuario item in Base)
+                {
+                    Usuario temp = new Usuario();
 
-                temp.nome = item.nome;
+                    temp.nome = item.nome;
 
-                byte[] data;
-                // Convert the input string to a byte array and compute the hash.
-                if(Salted)
-                    data = sha256hash.ComputeHash(Encoding.UTF8.GetBytes(item.senha + item.nome));
-                else
-                    data = sha256hash.ComputeHash(Encoding.UTF8.GetBytes(item.senha));
+                    byte[] data;
+                    // Convert the input string to a byte array and compute the hash.
+                    if(Salted)
+                        data = sha256hash.ComputeHash(Encoding.UTF8.GetBytes(item.senha + item.nome));
+                    else
+                        data = sha256hash.ComputeHash(Encoding.UTF8.GetBytes(item.senha));
 
-                temp.senha = BitConverter.ToString(data).Replace("-", string.Empty);
+                    temp.senha = BitConverter.ToString(data).Replace("-", string.Empty);
 
-                ret.Add(temp);
+                    writetext.WriteLine(temp.nome + "|" + temp.senha);
+
+                    ret.Add(temp);
+                }
             }
-
             return ret;
         }
 
@@ -358,8 +371,12 @@ namespace Cryptography
     {
         static void Main(string[] args)
         {
+            //Perguntar ao usuario o caminho do txt
+            Console.Write("Please insert the absolute path of the base to be converted: ");
+            string filePath = Console.ReadLine();
+
             //Ler linhas do arquivo .txt que contem as senhas e os usuarios
-            string[] lines = System.IO.File.ReadAllLines(@"/Volumes/SDCard/FEI/Destro/Cryptography/base.txt");
+            string[] lines = System.IO.File.ReadAllLines(filePath);
 
             //Init lista de usuarios
             List<Usuario> usuarios_as_is = new List<Usuario>();
