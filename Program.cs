@@ -62,6 +62,22 @@ namespace Cryptography
             return ret;
         }
 
+        public void DecryptBase(string[] lines){
+            foreach(string line in lines){
+                Usuario temp = new Usuario();
+                Usuario asis = new Usuario();
+
+                asis.nome = line.Split("|")[0];
+                asis.senha = line.Split("|")[1];
+
+
+                temp.nome = line.Split("|")[0];
+                temp.senha = line.Split("|")[1];
+
+                temp.senha = Decrypt(temp.senha);
+            }
+        }
+
         public string Encrypt (string input){
             string ret = "";
             char n;
@@ -100,6 +116,8 @@ namespace Cryptography
             Console.WriteLine("|     10 - Validate MD5 Salted base.      |");
             Console.WriteLine("|     11 - Validate SHA1 Salted base.     |");
             Console.WriteLine("|     12 - Validate SHA256 Salted base.   |");
+            Console.WriteLine("|-----------------------------------------|");
+            Console.WriteLine("|     13 - Decrypt selected base.         |");
             Console.WriteLine("|-----------------------------------------|");
             Console.WriteLine("|     20 - Show unencrypted base.         |");
             Console.WriteLine("|-----------------------------------------|");
@@ -244,6 +262,7 @@ namespace Cryptography
                         Console.WriteLine("Validation complete! Elaspsed time to validate MD5: " + watch.Elapsed.TotalMilliseconds + " Miliseconds");
 
                     Console.WriteLine("-----------------------------------------------------------------------------------");
+                    Console.Write("Press any key to continue...");
                     Console.ReadKey();
                 }else
                 {
@@ -251,6 +270,7 @@ namespace Cryptography
                     Console.WriteLine("-------------------------------------------------------------------------------------------");
                     Console.WriteLine("Something went wrong, user is not Signed or the Password is incorrect. Please try again.");
                     Console.WriteLine("-------------------------------------------------------------------------------------------");
+                    Console.Write("Press any key to continue...");
                     Console.ReadKey();
                 }   
             }else{
@@ -258,6 +278,7 @@ namespace Cryptography
                     Console.WriteLine("-------------------------------------------------------------------------------------------");
                     Console.WriteLine("Something went wrong, user is not Signed or the Password is incorrect. Please try again.");
                     Console.WriteLine("-------------------------------------------------------------------------------------------");
+                    Console.Write("Press any key to continue...");
                     Console.ReadKey();
 
             }
@@ -294,6 +315,7 @@ namespace Cryptography
                         Console.WriteLine("Validation complete! Elaspsed time to validate SHA1: " + watch.Elapsed.TotalMilliseconds + " Miliseconds");
 
                     Console.WriteLine("-------------------------------------------------------------------------------------------");
+                    Console.Write("Press any key to continue...");
                     Console.ReadKey();
                 }else
                 {
@@ -301,6 +323,7 @@ namespace Cryptography
                     Console.WriteLine("-------------------------------------------------------------------------------------------");
                     Console.WriteLine("Something went wrong, user is not Signed or the Password is incorrect. Please try again.");
                     Console.WriteLine("-------------------------------------------------------------------------------------------");
+                    Console.Write("Press any key to continue...");
                     Console.ReadKey();
                 }   
             }else{
@@ -308,6 +331,7 @@ namespace Cryptography
                     Console.WriteLine("-------------------------------------------------------------------------------------------");
                     Console.WriteLine("Something went wrong, user is not Signed or the Password is incorrect. Please try again.");
                     Console.WriteLine("-------------------------------------------------------------------------------------------");
+                    Console.Write("Press any key to continue...");
                     Console.ReadKey();
 
             } 
@@ -345,6 +369,7 @@ namespace Cryptography
                         Console.WriteLine("Validation complete! Elaspsed time to validate SHA256: " + watch.Elapsed.TotalMilliseconds + " Miliseconds");
 
                     Console.WriteLine("--------------------------------------------------------------------------------------------");
+                    Console.Write("Press any key to continue...");
                     Console.ReadKey();
                 }else
                 {
@@ -352,6 +377,7 @@ namespace Cryptography
                     Console.WriteLine("-------------------------------------------------------------------------------------------");
                     Console.WriteLine("Something went wrong, user is not Signed or the Password is incorrect. Please try again.");
                     Console.WriteLine("-------------------------------------------------------------------------------------------");
+                    Console.Write("Press any key to continue...");
                     Console.ReadKey();
                 }   
             }else{
@@ -359,6 +385,7 @@ namespace Cryptography
                     Console.WriteLine("-------------------------------------------------------------------------------------------");
                     Console.WriteLine("Something went wrong, user is not Signed or the Password is incorrect. Please try again.");
                     Console.WriteLine("-------------------------------------------------------------------------------------------");
+                    Console.Write("Press any key to continue...");
                     Console.ReadKey();
 
             }
@@ -394,6 +421,7 @@ namespace Cryptography
             Console.WriteLine("Loading the program, please wait...");
 
             //Itera sobre as linhas do arquivo para traduzir para uma List
+            var watchDe = System.Diagnostics.Stopwatch.StartNew();
             foreach(string line in lines){
                 Usuario temp = new Usuario();
                 Usuario asis = new Usuario();
@@ -410,6 +438,13 @@ namespace Cryptography
 
                 usuarios_decrypt.Add(temp);
             }
+            watchDe.Stop();
+
+            Console.WriteLine("---------------------------------------------------------------------");
+            Console.WriteLine("Elaspsed time to decrypt base: " + watchDe.Elapsed.TotalMilliseconds + " Miliseconds");
+            Console.WriteLine("---------------------------------------------------------------------");
+            Console.Write("Press any key to continue...");
+            Console.ReadKey();
 
             using(BaseConverter converter = new BaseConverter())
             {
@@ -434,6 +469,7 @@ namespace Cryptography
                             Console.WriteLine("---------------------------------------------------------------------");
                             Console.WriteLine("Elaspsed time to convert base to MD5: " + watch.Elapsed.TotalMilliseconds + " Miliseconds");
                             Console.WriteLine("---------------------------------------------------------------------");
+                            Console.Write("Press any key to continue...");
                             Console.ReadKey();
                         }
                     break;
@@ -447,6 +483,7 @@ namespace Cryptography
                             Console.WriteLine("----------------------------------------------------------------");
                             Console.WriteLine("Elaspsed time to convert base to SHA1: " + watch.Elapsed.TotalMilliseconds+ " Miliseconds");
                             Console.WriteLine("----------------------------------------------------------------");
+                            Console.Write("Press any key to continue...");
                             Console.ReadKey();
                         }
                     break;
@@ -460,6 +497,7 @@ namespace Cryptography
                             Console.WriteLine("---------------------------------------------------------------------");
                             Console.WriteLine("Elaspsed time to convert base to SHA256: " + watch.Elapsed.TotalMilliseconds + " Miliseconds");
                             Console.WriteLine("---------------------------------------------------------------------");
+                            Console.Write("Press any key to continue...");
                             Console.ReadKey();
                         }
                     break;
@@ -473,6 +511,7 @@ namespace Cryptography
                             Console.WriteLine("-------------------------------------------------------------------------");
                             Console.WriteLine("Elaspsed time to convert base to salted MD5: " + watch.Elapsed.TotalMilliseconds + " Miliseconds");
                             Console.WriteLine("-------------------------------------------------------------------------");
+                            Console.Write("Press any key to continue...");
                             Console.ReadKey();
                         }
                     break;
@@ -486,6 +525,7 @@ namespace Cryptography
                             Console.WriteLine("--------------------------------------------------------------------");
                             Console.WriteLine("Elaspsed time to convert base to salted SHA1: " + watch.Elapsed.TotalMilliseconds+ " Miliseconds");
                             Console.WriteLine("--------------------------------------------------------------------");
+                            Console.Write("Press any key to continue...");
                             Console.ReadKey();
                         }
                     break;
@@ -499,6 +539,7 @@ namespace Cryptography
                             Console.WriteLine("-------------------------------------------------------------------");
                             Console.WriteLine("Elaspsed time to convert base to salted SHA256: " + watch.Elapsed.TotalMilliseconds + " Miliseconds");
                             Console.WriteLine("-------------------------------------------------------------------");
+                            Console.Write("Press any key to continue...");
                             Console.ReadKey();
                         }
                     break;
@@ -592,6 +633,20 @@ namespace Cryptography
                             validator.ValidateSHA256(usuarios_sha256_salted, temp, true);
                         }
                     break;
+                    case "13":
+                        using(CaesarCypher cc = new CaesarCypher())
+                        {
+                            var watch = System.Diagnostics.Stopwatch.StartNew();
+                            cc.DecryptBase(lines);
+                            watch.Stop();
+
+                            Console.WriteLine("---------------------------------------------------------");
+                            Console.WriteLine("Elaspsed time to decrypt base: " + watch.Elapsed.TotalMilliseconds + " Miliseconds");
+                            Console.WriteLine("---------------------------------------------------------");
+                            Console.Write("Press any key to continue...");
+                            Console.ReadKey();
+                        }
+                    break;
                     case "20":
                         Console.Clear();
                         Console.WriteLine(" ----------------------------------------------------------------------------------------------");
@@ -601,6 +656,7 @@ namespace Cryptography
                             Console.WriteLine("|" + item.nome + "|" + item.senha + "|");
                         }
                         Console.WriteLine(" ----------------------------------------------------------------------------------------------");
+                        Console.Write("Press any key to continue...");
                         Console.ReadKey();
                     break;
                     case "q":
@@ -609,6 +665,7 @@ namespace Cryptography
                     break;
                     default:
                         Console.WriteLine("Bad instruction");
+                        Console.Write("Press any key to continue...");
                         Console.ReadKey();
                     break;
                 }
