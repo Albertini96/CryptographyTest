@@ -119,6 +119,10 @@ namespace Cryptography
             Console.WriteLine("|-----------------------------------------|");
             Console.WriteLine("|     13 - Decrypt selected base.         |");
             Console.WriteLine("|-----------------------------------------|");
+            Console.WriteLine("|     14 - Stress test to MD5.            |");
+            Console.WriteLine("|     15 - Stress test to SHA1.           |");
+            Console.WriteLine("|     16 - Stress test to SHA256.         |");
+            Console.WriteLine("|-----------------------------------------|");
             Console.WriteLine("|     20 - Show unencrypted base.         |");
             Console.WriteLine("|-----------------------------------------|");
             Console.WriteLine("|     q - Quit program                    |");
@@ -394,6 +398,85 @@ namespace Cryptography
         public void Dispose(){}
     }
 
+    class StressTest : IDisposable{
+        public void MD5ST(List<Usuario> Base, int times){
+            List<Usuario> mock = new List<Usuario>();
+            List<double> elapsedTimes = new List<double>();
+
+            using(BaseConverter cc = new BaseConverter()){
+                for(int i = 0; i< times; i++){
+                    var watchDe = System.Diagnostics.Stopwatch.StartNew();
+                    mock = cc.ToMD5(Base, false);
+                    watchDe.Stop();
+
+                    elapsedTimes.Add(watchDe.Elapsed.TotalMilliseconds);
+                }
+            }
+
+            double average = elapsedTimes.Average();
+            double sumOfSquaresOfDifferences = elapsedTimes.Select(val => (val - average) * (val - average)).Sum();
+            double sd = Math.Sqrt(sumOfSquaresOfDifferences / elapsedTimes.Count()); 
+
+            Console.WriteLine("-----------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("Average Elaspsed time to convert base to MD5 (In " + times.ToString() + " samples): " + average + " Miliseconds");
+            Console.WriteLine("Standard deviation of time to convert base to MD5 (In " + times.ToString() + " samples): " + sd +  " Miliseconds");
+            Console.WriteLine("-----------------------------------------------------------------------------------------------------------------");
+            Console.Write("Press any key to continue...");
+            Console.ReadKey();
+        }
+        public void SHA1ST(List<Usuario> Base, int times){
+            List<Usuario> mock = new List<Usuario>();
+            List<double> elapsedTimes = new List<double>();
+
+            using(BaseConverter cc = new BaseConverter()){
+                for(int i = 0; i< times; i++){
+                    var watchDe = System.Diagnostics.Stopwatch.StartNew();
+                    mock = cc.ToSHA1(Base, false);
+                    watchDe.Stop();
+
+                    elapsedTimes.Add(watchDe.Elapsed.TotalMilliseconds);
+                }
+            }
+
+            double average = elapsedTimes.Average();
+            double sumOfSquaresOfDifferences = elapsedTimes.Select(val => (val - average) * (val - average)).Sum();
+            double sd = Math.Sqrt(sumOfSquaresOfDifferences / elapsedTimes.Count()); 
+
+            Console.WriteLine("-----------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("Average Elaspsed time to convert base to SHA1 (In " + times.ToString() + " samples): " + average + " Miliseconds");
+            Console.WriteLine("Standard deviation of time to convert base to SHA1 (In " + times.ToString() + " samples): " + sd +  " Miliseconds");
+            Console.WriteLine("-----------------------------------------------------------------------------------------------------------------");
+            Console.Write("Press any key to continue...");
+            Console.ReadKey();
+        }
+        public void SHA256ST(List<Usuario> Base, int times){
+            List<Usuario> mock = new List<Usuario>();
+            List<double> elapsedTimes = new List<double>();
+
+            using(BaseConverter cc = new BaseConverter()){
+                for(int i = 0; i< times; i++){
+                    var watchDe = System.Diagnostics.Stopwatch.StartNew();
+                    mock = cc.ToSHA256(Base, false);
+                    watchDe.Stop();
+
+                    elapsedTimes.Add(watchDe.Elapsed.TotalMilliseconds);
+                }
+            }
+
+            double average = elapsedTimes.Average();
+            double sumOfSquaresOfDifferences = elapsedTimes.Select(val => (val - average) * (val - average)).Sum();
+            double sd = Math.Sqrt(sumOfSquaresOfDifferences / elapsedTimes.Count()); 
+
+            Console.WriteLine("-----------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("Average Elaspsed time to convert base to SHA256 (In " + times.ToString() + " samples): " + average + " Miliseconds");
+            Console.WriteLine("Standard deviation of time to convert base to SHA (In " + times.ToString() + " samples): " + sd +  " Miliseconds");
+            Console.WriteLine("-----------------------------------------------------------------------------------------------------------------");
+            Console.Write("Press any key to continue...");
+            Console.ReadKey();
+        }
+
+        public void Dispose(){}
+    }
     class Program
     {
         static void Main(string[] args)
@@ -418,7 +501,7 @@ namespace Cryptography
             CaesarCypher CaesarC = new CaesarCypher();
 
             Console.Clear();
-            Console.WriteLine("Loading the program, please wait...");
+            Console.WriteLine("Decrypting selected base, please wait...");
 
             //Itera sobre as linhas do arquivo para traduzir para uma List
             var watchDe = System.Diagnostics.Stopwatch.StartNew();
@@ -445,6 +528,9 @@ namespace Cryptography
             Console.WriteLine("---------------------------------------------------------------------");
             Console.Write("Press any key to continue...");
             Console.ReadKey();
+
+            Console.Clear();
+            Console.WriteLine("Loading the program, please wait...");
 
             using(BaseConverter converter = new BaseConverter())
             {
@@ -645,6 +731,24 @@ namespace Cryptography
                             Console.WriteLine("---------------------------------------------------------");
                             Console.Write("Press any key to continue...");
                             Console.ReadKey();
+                        }
+                    break;
+                    case "14":
+                        using(StressTest st = new StressTest())
+                        {
+                            st.MD5ST(usuarios_decrypt, 30);
+                        }
+                    break;
+                    case "15":
+                        using(StressTest st = new StressTest())
+                        {
+                            st.SHA1ST(usuarios_decrypt, 30);
+                        }
+                    break;
+                    case "16":
+                        using(StressTest st = new StressTest())
+                        {
+                            st.SHA256ST(usuarios_decrypt, 30);
                         }
                     break;
                     case "20":
